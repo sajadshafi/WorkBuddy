@@ -16,10 +16,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": [
-    "vite.config.ts",
-    ".eslintrc.cjs", //works without this as well but it is recommended and sometimes it might show error without this.
-    "src"
-  ],
+  "include": ["vite.config.ts", ".lintstagedrc.cjs", ".eslintrc.cjs", "src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
