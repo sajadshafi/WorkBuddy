@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "test": "vitest",
     "lint": "eslint --ignore-path .gitignore .",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.{ts,tsx,css,scss}\""
+    "format": "prettier --ignore-path .gitignore --write \"**/*.{ts,tsx,css,scss}\"",
+    "prepare": "husky install"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -34,11 +35,21 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.0",
     "install-peerdeps": "^3.0.3",
     "jsdom": "^21.1.0",
+    "lint-staged": "^13.1.2",
     "prettier": "^2.8.4",
     "typescript": "^4.9.5",
     "vite": "^4.1.2",
     "vitest": "^0.28.5"
+  },
+  "lint-staged": {
+    "*.{.ts,.tsx}": [
+      "eslint"
+    ],
+    "*.{.ts,.tsx,.css,.scss}": [
+      "prettier --write"
+    ]
   }
 }
