@@ -1,5 +1,5 @@
 function Button() {
-  return <div>Button</div>;
+  return <div>Add Task</div>;
 }
 
 export default Button;
