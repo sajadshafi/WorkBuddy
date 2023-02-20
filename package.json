@@ -50,6 +50,7 @@
     ],
     "*.{.ts,.tsx,.css,.scss}": [
       "prettier --write"
-    ]
+    ],
+    "*.js": "eslint --cache --fix"
   }
 }
