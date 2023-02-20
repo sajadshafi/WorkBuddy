@@ -1,5 +1,7 @@
-function Button() {
-  return <button type="button">Add Task</button>;
+const Button = () => {
+  return (
+    <div>Button</div>
+  )
 }
 
 export default Button;
