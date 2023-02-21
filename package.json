@@ -9,8 +9,7 @@
     "preview": "vite preview",
     "test": "vitest",
     "lint": "eslint --ignore-path .gitignore .",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.{ts,tsx,css,scss}\"",
-    "prepare": "husky install"
+    "format": "prettier --ignore-path .gitignore --write \"**/*.{ts,tsx,css,scss}\""
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -27,6 +26,7 @@
     "@typescript-eslint/parser": "^5.52.0",
     "@vitejs/plugin-react": "^3.1.0",
     "@vitest/coverage-c8": "^0.28.5",
+    "autoprefixer": "^10.4.13",
     "eslint": "^8.34.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
@@ -36,11 +36,14 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-testing-library": "^5.10.2",
     "husky": "^8.0.0",
     "install-peerdeps": "^3.0.3",
     "jsdom": "^21.1.0",
     "lint-staged": "^13.1.2",
+    "postcss": "^8.4.21",
     "prettier": "^2.8.4",
+    "tailwindcss": "^3.2.7",
     "typescript": "^4.9.5",
     "vite": "^4.1.2",
     "vitest": "^0.28.5"

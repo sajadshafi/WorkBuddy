@@ -1,4 +1,4 @@
-function Input() {
+const Input = () => {
   return (
     <div>
       <label htmlFor="tskname">
@@ -10,6 +10,6 @@ function Input() {
       </label>
     </div>
   );
-}
+};
 
 export default Input;

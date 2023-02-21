@@ -13,7 +13,13 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
   ],
-  overrides: [],
+  overrides: [
+    {
+      // 3) Now we enable eslint-plugin-testing-library rules or preset only for matching testing files!
+      files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+      extends: ['plugin:testing-library/react'],
+    },
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
@@ -25,9 +31,18 @@ module.exports = {
     '@typescript-eslint',
     'prettier',
     'jsx-a11y',
+    'testing-library',
     'react-hooks',
   ],
   rules: {
     'react/react-in-jsx-scope': 0,
+    'import/extensions': [1, 'never'],
+    'react/function-component-definition': [
+      2,
+      {
+        namedComponents: ['arrow-function', 'function-expression'],
+        unnamedComponents: ['arrow-function', 'function-expression'],
+      },
+    ],
   },
 };
