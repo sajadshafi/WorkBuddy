@@ -17,7 +17,7 @@ export const ThemeContext = createContext<{
 });
 
 const ThemeProvider = ({ children }: BaseProps) => {
-  const [theme, setTheme] = useState<string>('light');
+  const [theme, setTheme] = useState<string>('dark');
   const changeTheme = useCallback(() => {
     localStorage.setItem('theme', theme === 'dark' ? 'light' : 'dark');
     setTheme(currentTheme => (currentTheme === 'dark' ? 'light' : 'dark'));
@@ -33,7 +33,7 @@ const ThemeProvider = ({ children }: BaseProps) => {
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
-    setTheme(savedTheme || 'light');
+    setTheme(savedTheme || 'dark');
   }, []);
 
   return (
