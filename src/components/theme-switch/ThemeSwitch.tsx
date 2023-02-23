@@ -9,12 +9,15 @@ const ThemeSwitch = () => {
       className="inline-block">
       <input
         id="theme-switch"
+        placeholder={theme}
         className="toggle-checkbox inline-block"
         type="checkbox"
         onChange={toggleTheme}
         checked={theme === 'dark'}
       />
-      <div className="toggle-slot">
+      <div
+        data-testid="themeToggler"
+        className="toggle-slot">
         <div className="sun-icon-wrapper hidden">
           <div
             className="iconify sun-icon"
