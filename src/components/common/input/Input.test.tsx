@@ -4,8 +4,16 @@ import Input from './Input';
 
 describe('<Input /> rendering', () => {
   test('check if inputbox is rendering', () => {
-    render(<Input />);
-    const inputbox = screen.getByRole('textbox', { name: 'Task' });
+    render(
+      <Input
+        label="any"
+        name="any"
+        // register=
+        // icon=an
+        classes=""
+      />
+    );
+    const inputbox = screen.getByRole('textbox');
     expect(inputbox).toBeInTheDocument();
   });
 });

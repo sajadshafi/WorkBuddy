@@ -94,4 +94,20 @@
   opacity: 1;
   transform: translate(2em, 2em) rotate(-15deg);
 }
+input,
+button {
+  &:hover {
+    border: none;
+    outline: none;
+  }
+  &:active {
+    border: none;
+    outline: none;
+  }
+  &:focus {
+    border: none;
+    outline: none;
+  }
+}
+=======
 //#endregion

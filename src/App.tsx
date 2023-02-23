@@ -1,16 +1,11 @@
 import './App.scss';
-import Button from './components/common/button/Button';
-import ThemeSwitch from './components/theme-switch/ThemeSwitch';
+import Button from '@/components/common/button/Button';
+import Login from './pages/login/Login';
 
 const App = () => {
   return (
-    <div className="w-full min-h-screen bg-light dark:bg-darkgray">
-      <ThemeSwitch />
-      <div className="">
-        <h2 className="text-darkgray dark:text-light">Hello World!</h2>
-        <Button />
-        <h1 className="text-darkgray dark:text-light">Hello world!</h1>
-      </div>
+    <div className="w-[96%] md:w-4/5 m-auto bg-lightgray dark:bg-darkgray">
+      <Login />
     </div>
   );
 };
