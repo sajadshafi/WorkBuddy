@@ -1,5 +1,5 @@
 {
-  "name": "task-tracker",
+  "name": "tromazo",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -48,6 +48,7 @@
     "tailwindcss": "^3.2.7",
     "typescript": "^4.9.5",
     "vite": "^4.1.2",
+    "vite-tsconfig-paths": "^4.0.5",
     "vitest": "^0.28.5"
   },
   "lint-staged": {

@@ -1,8 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  darkMode: 'class',
   theme: {
-    extend: {
+  extend: {
       colors: {
         primary: '#6E3CBC',
         secondary: '#5b2ea2',
@@ -13,6 +14,10 @@ module.exports = {
         danger: 'rgb(233, 31, 0)',
         success: '#54B435',
       },
+    },
+    fontFamily: {
+      poppins: ['Poppins', 'sans-serif'],
+      arvo: ['Arvo', 'serif'],
     },
   },
   plugins: [],
