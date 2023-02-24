@@ -1,11 +1,10 @@
 import { screen, render, fireEvent } from '@testing-library/react';
 
-import { useContext } from 'react';
-import ThemeProvider, { ThemeContext } from './ThemeContext';
+import ThemeProvider, { useTheme } from './ThemeContext';
 
 describe('Theme context states and functions', () => {
   const TestConsumer = () => {
-    const { theme, toggleTheme } = useContext(ThemeContext);
+    const { theme, toggleTheme } = useTheme();
     return (
       <button
         type="button"

@@ -9,6 +9,11 @@
   @apply font-poppins;
 }
 
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 //#region ThemeSwitch styling
 .toggle-checkbox {
   position: absolute;
@@ -109,5 +114,22 @@ button {
     outline: none;
   }
 }
-=======
+//#endregion
+
+//#region tooltips
+.tooltip-top {
+  &::after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-top: 6px solid;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
 //#endregion

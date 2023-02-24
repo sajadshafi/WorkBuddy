@@ -1,8 +1,7 @@
-import { useContext } from 'react';
-import { ThemeContext } from '../../store/theme-context/ThemeContext';
+import { useTheme } from '../../store/theme-context/ThemeContext';
 
 const ThemeSwitch = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { theme, toggleTheme } = useTheme();
   return (
     <label
       htmlFor="theme-switch"

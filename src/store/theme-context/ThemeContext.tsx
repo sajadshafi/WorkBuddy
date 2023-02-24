@@ -4,17 +4,22 @@ import {
   useCallback,
   useMemo,
   useEffect,
+  useContext,
 } from 'react';
 
 import { BaseProps } from 'interfaces/interfaces';
 
-export const ThemeContext = createContext<{
+const ThemeContext = createContext<{
   theme: string;
   toggleTheme: () => void;
 }>({
   theme: 'dark',
   toggleTheme: () => {},
 });
+
+export const useTheme = () => {
+  return useContext(ThemeContext);
+};
 
 const ThemeProvider = ({ children }: BaseProps) => {
   const [theme, setTheme] = useState<string>('dark');
