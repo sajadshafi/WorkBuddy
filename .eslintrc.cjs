@@ -44,6 +44,6 @@ module.exports = {
         unnamedComponents: ['arrow-function', 'function-expression'],
       },
     ],
-    'import/no-absolute-path': [2, { commonjs: false, amd: false }],
+    'react/button-has-type': 0,
   },
 };
