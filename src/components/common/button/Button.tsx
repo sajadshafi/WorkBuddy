@@ -12,7 +12,7 @@ const Button = ({
   return (
     <button
       type={type || 'submit'}
-      className={`px-4 group flex justify-center py-2 bg-primary rounded shadow-md shadow-lightgray text-light dark:shadow-dark hover:bg-secondary ${classes}`}
+      className={`px-4 group flex justify-center py-2 bg-primary rounded shadow-sm text-light dark:shadow-dark hover:bg-secondary ${classes}`}
       onClick={clickHandler}>
       <span className="flex items-center">
         {text}

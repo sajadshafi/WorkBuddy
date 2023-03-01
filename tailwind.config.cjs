@@ -16,6 +16,9 @@ module.exports = {
         danger: 'rgb(233, 31, 0)',
         success: '#54B435',
       },
+      backgroundImage: {
+        'hero-pattern': "url('/images/bg.png')",
+      },
     },
     fontFamily: {
       poppins: ['Poppins', 'sans-serif'],

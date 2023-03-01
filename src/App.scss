@@ -133,3 +133,19 @@ button {
   }
 }
 //#endregion
+
+//region Scrollbar
+body::-webkit-scrollbar {
+  width: 0.4em;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px;
+  @apply shadow-dark;
+}
+
+body::-webkit-scrollbar-thumb {
+  outline: 1px solid slategrey;
+  @apply bg-primary;
+}
+//endregion
