@@ -5,9 +5,10 @@ const ThemeSwitch = () => {
   return (
     <label
       htmlFor="theme-switch"
-      className="inline-block">
+      className="inline-block cursor-pointer">
       <input
         id="theme-switch"
+        data-testid="theme-switch"
         placeholder={theme}
         className="toggle-checkbox inline-block"
         type="checkbox"

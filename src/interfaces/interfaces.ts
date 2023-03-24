@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { UseFormRegister, RegisterOptions, FieldError } from 'react-hook-form';
 
 export interface BaseProps {
@@ -6,6 +7,7 @@ export interface BaseProps {
 
 export interface InputProps {
   label: string;
+  type: string;
   reg: UseFormRegister<LoginFormValues>;
   registerOptions: RegisterOptions;
   icon?: React.ReactNode;
@@ -30,4 +32,9 @@ export interface ButtonProps {
 export interface LoginFormValues {
   email: string;
   password: string;
+}
+
+export interface RouteValue {
+  path: string;
+  component: ReactNode;
 }

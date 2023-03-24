@@ -1,15 +1,32 @@
 import './App.scss';
+import { HashRouter, useLocation } from 'react-router-dom';
 
-import ThemeSwitch from './components/theme-switch/ThemeSwitch';
+import ThemeProvider from './store/theme-context/ThemeContext';
 import CustomRouter from './components/router/CustomRouter';
+import Navbar from './components/navbar/Navbar';
+import routes from './utils/routes';
 
 const App = () => {
+  const location = useLocation();
   return (
     <div className="bg-lightgray dark:bg-darkgray">
-      <ThemeSwitch />
+      {}
+      {location.pathname !== '/signin' &&
+        routes.find(route => route.path === location.pathname) !==
+          undefined && <Navbar />}
       <CustomRouter />
     </div>
   );
 };
 
-export default App;
+const WrappedApp = () => {
+  return (
+    <HashRouter>
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
+    </HashRouter>
+  );
+};
+
+export default WrappedApp;
