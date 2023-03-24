@@ -1,9 +1,11 @@
 import React from 'react';
 import { MdOutlineError } from 'react-icons/md';
 import { LoginInputProps } from '../../../interfaces/interfaces';
+import { useTheme } from '../../../store/theme-context/ThemeContext';
 
 const Input = ({
   label,
+  type,
   name,
   reg,
   registerOptions,
@@ -11,6 +13,7 @@ const Input = ({
   classes,
   error,
 }: LoginInputProps) => {
+  const { theme } = useTheme();
   return (
     <div className="my-5">
       <div
@@ -27,9 +30,10 @@ const Input = ({
             /* eslint-disable react/jsx-props-no-spreading */
             {...reg(name, registerOptions)}
             id={name}
+            type={type}
             placeholder={label}
             name={name}
-            className={`${classes} text-[.85rem] bg-transparent flex-1 w-full block`}
+            className={`${classes} ${theme}-input text-[.85rem] bg-transparent flex-1 w-full block`}
           />
         </label>
         <span

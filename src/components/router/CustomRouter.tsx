@@ -1,26 +1,20 @@
 import { Routes, Route } from 'react-router-dom';
 import NotFound from '../../pages/not-found/NotFound';
-import Login from '../../pages/login/Login';
-import Dashboard from '../../pages/dashboard/Dashboard';
-import Home from '../../pages/home/Home';
+import routes from '../../utils/routes';
 
 const CustomRouter = () => {
   return (
     <Routes>
+      {routes &&
+        routes.map(route => (
+          <Route
+            key={route.path}
+            path={route.path}
+            element={route.component}
+          />
+        ))}
       <Route
-        path="/signin"
-        element={<Login />}
-      />
-      <Route
-        path="/dashboard"
-        element={<Dashboard />}
-      />
-      <Route
-        path="/"
-        element={<Home />}
-      />
-      <Route
-        path="*"
+        path="/*"
         element={<NotFound />}
       />
     </Routes>

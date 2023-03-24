@@ -7,7 +7,7 @@ import {
   useContext,
 } from 'react';
 
-import { BaseProps } from 'interfaces/interfaces';
+import { BaseProps } from '../../interfaces/interfaces';
 
 const ThemeContext = createContext<{
   theme: string;

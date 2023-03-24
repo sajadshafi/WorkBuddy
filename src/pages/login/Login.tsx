@@ -7,6 +7,7 @@ import Input from '../../components/common/input/Input';
 import Button from '../../components/common/button/Button';
 import { LoginFormValues } from '../../interfaces/interfaces';
 import schema from '../../utils/schema';
+import ThemeSwitch from '../../components/theme-switch/ThemeSwitch';
 
 const Login = () => {
   const {
@@ -21,6 +22,9 @@ const Login = () => {
 
   return (
     <div className="">
+      <div className="fixed right-6 top-4 z-10">
+        <ThemeSwitch />
+      </div>
       <div className="flex h-screen bg-lightgray dark:bg-darkgray bg-opacity-50 dark:bg-opacity-50 backdrop-blur-sm justify-center md:items-center">
         <div className="w-[96%] md:w-4/5 m-auto">
           <form
@@ -32,6 +36,7 @@ const Login = () => {
             <div className="px-5 py-4">
               <Input
                 name="email"
+                type="text"
                 label="Email"
                 reg={register}
                 registerOptions={schema.email}
@@ -39,6 +44,7 @@ const Login = () => {
                 icon={<MdEmail />}
               />
               <Input
+                type="password"
                 name="password"
                 label="Password"
                 reg={register}
