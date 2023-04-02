@@ -1,8 +1,19 @@
+import { User } from 'firebase/auth';
 import { ReactNode } from 'react';
-import { UseFormRegister, RegisterOptions, FieldError } from 'react-hook-form';
+import { UseFormRegister, RegisterOptions } from 'react-hook-form';
+import { TypeOptions } from 'react-toastify';
 
 export interface BaseProps {
   children?: React.ReactNode;
+}
+
+export interface IAuth {
+  user: User | null;
+  loading: boolean;
+  isLoggedIn: boolean;
+  SignIn: (creds: LoginFormValues, onSuccess: () => void) => void;
+  SignUp: (creds: LoginFormValues) => void;
+  SignOut: () => void;
 }
 
 export interface InputProps {
@@ -37,4 +48,11 @@ export interface LoginFormValues {
 export interface RouteValue {
   path: string;
   component: ReactNode;
+  isPrivate: boolean;
+}
+
+export interface IToast {
+  message: string;
+  toast_type: TypeOptions;
+  toast_theme: string;
 }

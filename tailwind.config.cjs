@@ -13,8 +13,9 @@ module.exports = {
         darkgray: '#202020',
         darkbg: '#333333',
         dark: '#0e0e0e',
-        danger: 'rgb(233, 31, 0)',
+        danger: '#e91f00',
         success: '#54B435',
+        warning: '#ffbb52',
       },
       backgroundImage: {
         'hero-pattern': "url('/images/bg.png')",

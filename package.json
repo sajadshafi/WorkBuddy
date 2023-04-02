@@ -1,5 +1,5 @@
 {
-  "name": "tromazo",
+  "name": "work-boddy",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -18,7 +18,9 @@
     "react-hook-form": "^7.43.2",
     "react-icons": "^4.7.1",
     "react-router-dom": "^6.8.1",
-    "sass": "^1.58.3"
+    "react-toastify": "^9.1.2",
+    "sass": "^1.58.3",
+    "sweetalert2": "^11.7.3"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",

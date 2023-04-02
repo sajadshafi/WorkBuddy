@@ -7,14 +7,17 @@ const routes: RouteValue[] = [
   {
     path: '/',
     component: <Home />,
+    isPrivate: false,
   },
   {
     path: '/signin',
     component: <Login />,
+    isPrivate: false,
   },
   {
     path: '/dashboard',
     component: <Dashboard />,
+    isPrivate: true,
   },
 ];
 

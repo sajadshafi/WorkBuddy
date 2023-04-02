@@ -1,4 +1,4 @@
-# Tromazo
+# WorkBuddy
 A simple todo app using React and typescript along with testing with vitest, eslint, prettier configurations.
 The purpose of this app is to learn basic concept of linting, prettier, vitejs, testing, typescript and coding standards
 
@@ -14,9 +14,9 @@ The purpose of this app is to learn basic concept of linting, prettier, vitejs, 
 
 
 
-# Tromazo
+# WorkBuddy
 
-Tromazo is a private module with version 0.0.0, which uses [Vite](https://github.com/vitejs/vite) as its development environment. It is built with [React](https://reactjs.org/) and [TypeScript](https://www.typescriptlang.org/) and also uses [Firebase](https://firebase.google.com/), [React Hook Form](https://react-hook-form.com/), [React Icons](https://react-icons.netlify.com/#/), [React Router DOM](https://reactrouter.com/web/guides/quick-start), and [Sass](https://sass-lang.com/) as dependencies for its development process.
+WorkBuddy is a private module with version 0.0.0, which uses [Vite](https://github.com/vitejs/vite) as its development environment. It is built with [React](https://reactjs.org/) and [TypeScript](https://www.typescriptlang.org/) and also uses [Firebase](https://firebase.google.com/), [React Hook Form](https://react-hook-form.com/), [React Icons](https://react-icons.netlify.com/#/), [React Router DOM](https://reactrouter.com/web/guides/quick-start), and [Sass](https://sass-lang.com/) as dependencies for its development process.
 
 ## Scripts
 

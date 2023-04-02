@@ -1,6 +1,6 @@
 // vite.config.ts
-import { defineConfig } from "file:///D:/Learning/React-next/tromazo/node_modules/.pnpm/vite@4.1.4_sass@1.58.3/node_modules/vite/dist/node/index.js";
-import react from "file:///D:/Learning/React-next/tromazo/node_modules/.pnpm/@vitejs+plugin-react@3.1.0_vite@4.1.4/node_modules/@vitejs/plugin-react/dist/index.mjs";
+import { defineConfig } from "file:///D:/Learning/React-next/work-buddy/node_modules/.pnpm/vite@4.1.4_sass@1.58.3/node_modules/vite/dist/node/index.js";
+import react from "file:///D:/Learning/React-next/work-buddy/node_modules/.pnpm/@vitejs+plugin-react@3.1.0_vite@4.1.4/node_modules/@vitejs/plugin-react/dist/index.mjs";
 var vite_config_default = defineConfig({
   plugins: [react()],
   test: {
