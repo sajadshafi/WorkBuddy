@@ -11,7 +11,7 @@ describe('Navbar', () => {
       </HashRouter>
     );
     expect(
-      screen.getByAltText('Tromazo - Manage your tasks and todos easily')
+      screen.getByAltText('WorkBuddy - Manage your tasks and todos easily')
     ).toBeInTheDocument();
     expect(screen.getByTestId('theme-switch')).toBeInTheDocument();
     expect(screen.getByTestId('user-menu-button')).toBeInTheDocument();

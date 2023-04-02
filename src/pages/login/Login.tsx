@@ -1,13 +1,21 @@
+// system imports
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { MdEmail, MdPassword } from 'react-icons/md';
 import { FaUserCircle } from 'react-icons/fa';
 import { RiLoginCircleFill } from 'react-icons/ri';
+import { useNavigate } from 'react-router-dom';
+import { GoogleAuthProvider } from 'firebase/auth';
 
+// custom imports
 import Input from '../../components/common/input/Input';
 import Button from '../../components/common/button/Button';
 import { LoginFormValues } from '../../interfaces/interfaces';
 import schema from '../../utils/schema';
 import ThemeSwitch from '../../components/theme-switch/ThemeSwitch';
+import { useAuth } from '../../store/auth-context/AuthContext';
+import { useTheme } from '../../store/theme-context/ThemeContext';
+import swal from '../../utils/swal';
+import { auth as firebaseAuth } from '../../firebase/BaseConfig';
 
 const Login = () => {
   const {
@@ -16,8 +24,31 @@ const Login = () => {
     formState: { errors },
   } = useForm<LoginFormValues>();
 
-  const handleLogin: SubmitHandler<LoginFormValues> = data => {
-    console.log('Data :', data);
+  const auth = useAuth();
+  const navigate = useNavigate();
+  const { theme } = useTheme();
+
+  const onSuccess = () => {
+    swal.toastify({
+      message: 'Logged in successfully!',
+      toast_type: 'success',
+      toast_theme: theme === 'dark' ? 'dark' : 'light',
+    });
+    navigate('/dashboard', { replace: true });
+  };
+  const handleLogin: SubmitHandler<LoginFormValues> = creds => {
+    auth.SignIn(creds, onSuccess);
+  };
+
+  const signInWithGoogle = () => {
+    auth
+      .signInWithPopup(googleProvider)
+      .then(res => {
+        console.log(res.user);
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
   };
 
   return (
@@ -59,6 +90,17 @@ const Login = () => {
                 loading={false}
                 icon={<RiLoginCircleFill />}
               />
+              <div className="login-buttons">
+                <button
+                  className="login-provider-button"
+                  onClick={signInWithGoogle}>
+                  <img
+                    src="https://img.icons8.com/ios-filled/50/000000/google-logo.png"
+                    alt="google icon"
+                  />
+                  <span> Continue with Google</span>
+                </button>
+              </div>
             </div>
           </form>
         </div>
