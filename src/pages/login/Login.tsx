@@ -4,7 +4,6 @@ import { MdEmail, MdPassword } from 'react-icons/md';
 import { FaUserCircle } from 'react-icons/fa';
 import { RiLoginCircleFill } from 'react-icons/ri';
 import { useNavigate } from 'react-router-dom';
-import { GoogleAuthProvider } from 'firebase/auth';
 
 // custom imports
 import Input from '../../components/common/input/Input';
@@ -15,7 +14,6 @@ import ThemeSwitch from '../../components/theme-switch/ThemeSwitch';
 import { useAuth } from '../../store/auth-context/AuthContext';
 import { useTheme } from '../../store/theme-context/ThemeContext';
 import swal from '../../utils/swal';
-import { auth as firebaseAuth } from '../../firebase/BaseConfig';
 
 const Login = () => {
   const {
@@ -40,16 +38,16 @@ const Login = () => {
     auth.SignIn(creds, onSuccess);
   };
 
-  const signInWithGoogle = () => {
-    auth
-      .signInWithPopup(googleProvider)
-      .then(res => {
-        console.log(res.user);
-      })
-      .catch(error => {
-        console.log(error.message);
-      });
-  };
+  // const signInWithGoogle = () => {
+  //   auth
+  //     .signInWithPopup(googleProvider)
+  //     .then(res => {
+  //       console.log(res.user);
+  //     })
+  //     .catch(error => {
+  //       console.log(error.message);
+  //     });
+  // };
 
   return (
     <div className="">
@@ -90,7 +88,7 @@ const Login = () => {
                 loading={false}
                 icon={<RiLoginCircleFill />}
               />
-              <div className="login-buttons">
+              {/* <div className="login-buttons">
                 <button
                   className="login-provider-button"
                   onClick={signInWithGoogle}>
@@ -100,7 +98,7 @@ const Login = () => {
                   />
                   <span> Continue with Google</span>
                 </button>
-              </div>
+              </div> */}
             </div>
           </form>
         </div>
