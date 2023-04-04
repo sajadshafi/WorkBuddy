@@ -10,9 +10,9 @@ export interface BaseProps {
 export interface IAuth {
   user: User | null;
   loading: boolean;
-  isLoggedIn: boolean;
   SignIn: (creds: LoginFormValues, onSuccess: () => void) => void;
-  SignUp: (creds: LoginFormValues) => void;
+  SignInWithGoogle: (onSuccess: () => void) => void;
+  SignUp: (creds: LoginFormValues, onSuccess: () => void) => void;
   SignOut: () => void;
 }
 
@@ -29,6 +29,10 @@ export interface InputProps {
 
 export interface LoginInputProps extends InputProps {
   name: 'email' | 'password';
+}
+
+export interface RegisterInputProps extends InputProps {
+  name: string;
 }
 
 export interface ButtonProps {

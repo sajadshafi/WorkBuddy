@@ -12,9 +12,10 @@ import AuthProvider from './store/auth-context/AuthContext';
 const App = () => {
   const location = useLocation();
   return (
-    <div className="bg-lightgray dark:bg-darkgray">
+    <div className="bg-lightgray dark:bg-darkgray text-dark dark:text-light">
       {}
       {location.pathname !== '/signin' &&
+        location.pathname !== '/signup' &&
         routes.find(route => route.path === location.pathname) !==
           undefined && <Navbar />}
       <CustomRouter />
