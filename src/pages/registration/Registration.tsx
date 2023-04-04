@@ -1,7 +1,7 @@
 // system imports
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { MdEmail, MdPassword } from 'react-icons/md';
-import { FaUserCircle } from 'react-icons/fa';
+import { FaUserCircle, FaUser } from 'react-icons/fa';
 import { RiLoginCircleFill } from 'react-icons/ri';
 import { ImFacebook, ImTwitter, ImGoogle } from 'react-icons/im';
 import { Link, useNavigate } from 'react-router-dom';
@@ -9,7 +9,7 @@ import { Link, useNavigate } from 'react-router-dom';
 // custom imports
 import Input from '../../components/common/input/Input';
 import Button from '../../components/common/button/Button';
-import { LoginFormValues } from '../../interfaces/interfaces';
+import { UserFormValues } from '../../interfaces/interfaces';
 import schema from '../../utils/schema';
 import ThemeSwitch from '../../components/theme-switch/ThemeSwitch';
 import { useAuth } from '../../store/auth-context/AuthContext';
@@ -21,7 +21,7 @@ const Registration = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginFormValues>();
+  } = useForm<UserFormValues>();
 
   const { SignUp, loading } = useAuth();
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ const Registration = () => {
     });
     navigate('/dashboard', { replace: true });
   };
-  const handleLogin: SubmitHandler<LoginFormValues> = creds => {
+  const handleLogin: SubmitHandler<UserFormValues> = creds => {
     SignUp(creds, onSuccess);
   };
 
@@ -54,6 +54,15 @@ const Registration = () => {
                 <FaUserCircle />
               </h2>
               <div className="px-5 py-4">
+                <Input
+                  name="displayName"
+                  type="text"
+                  label="Name"
+                  reg={register}
+                  registerOptions={schema.displayName}
+                  error={errors.displayName && errors.displayName.message}
+                  icon={<FaUser />}
+                />
                 <Input
                   name="email"
                   type="text"

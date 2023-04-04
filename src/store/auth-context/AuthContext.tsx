@@ -10,7 +10,12 @@ import { useNavigate } from 'react-router-dom';
 import { User, onAuthStateChanged } from 'firebase/auth';
 
 import { firebaseAuth } from '../../firebase/BaseConfig';
-import { BaseProps, IAuth, LoginFormValues } from '../../interfaces/interfaces';
+import {
+  BaseProps,
+  IAuth,
+  LoginFormValues,
+  UserFormValues,
+} from '../../interfaces/interfaces';
 import TAuth from '../../firebase/services/AuthServices';
 import swal from '../../utils/swal';
 import { alertType } from '../../utils/constants';
@@ -35,46 +40,50 @@ const AuthProvider = ({ children }: BaseProps) => {
   const navigate = useNavigate();
   // #endregion
   // #region Auth Functions
-  const SignUp = useCallback(
-    (creds: LoginFormValues, onSuccess: () => void) => {
-      setIsLoading(true);
-      TAuth.SignUp(creds)
-        .then(userCredential => {
-          const { user } = userCredential;
-          if (user) {
-            setCurrentUser(user);
-            onSuccess();
-          } else {
-            swal.showAlert(
-              'Error',
-              'Something went wrong!',
-              'Ok',
-              alertType.ERROR
-            );
-          }
-          setIsLoading(false);
-        })
-        .catch(error => {
-          if (error.code === 'auth/email-already-in-use') {
-            swal.showAlert(
-              'Error',
-              'Email already registered! Please try Sign in',
-              'Ok',
-              alertType.ERROR
-            );
-          } else if (error.code === 'auth/too-many-requests') {
-            swal.showAlert(
-              'Error',
-              'Account disabled! Too many attempts!',
-              'Ok',
-              alertType.ERROR
-            );
-          }
-          setIsLoading(false);
-        });
-    },
-    []
-  );
+  const SignUp = useCallback((creds: UserFormValues, onSuccess: () => void) => {
+    setIsLoading(true);
+    TAuth.SignUp(creds)
+      .then(userCredential => {
+        const { user } = userCredential;
+        if (user) {
+          setCurrentUser(user);
+          TAuth.UpdateProfile(user, creds.displayName, null)
+            .then(result => {
+              console.log('Updated Data: ', result);
+            })
+            .catch(error => {
+              swal.showAlert('Error', error.message, 'Ok', alertType.ERROR);
+            });
+          onSuccess();
+        } else {
+          swal.showAlert(
+            'Error',
+            'Something went wrong!',
+            'Ok',
+            alertType.ERROR
+          );
+        }
+        setIsLoading(false);
+      })
+      .catch(error => {
+        if (error.code === 'auth/email-already-in-use') {
+          swal.showAlert(
+            'Error',
+            'Email already registered! Please try Sign in',
+            'Ok',
+            alertType.ERROR
+          );
+        } else if (error.code === 'auth/too-many-requests') {
+          swal.showAlert(
+            'Error',
+            'Account disabled! Too many attempts!',
+            'Ok',
+            alertType.ERROR
+          );
+        }
+        setIsLoading(false);
+      });
+  }, []);
 
   const SignIn = useCallback(
     async (creds: LoginFormValues, onSuccess: () => void) => {

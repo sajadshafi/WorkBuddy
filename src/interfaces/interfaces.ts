@@ -12,14 +12,15 @@ export interface IAuth {
   loading: boolean;
   SignIn: (creds: LoginFormValues, onSuccess: () => void) => void;
   SignInWithGoogle: (onSuccess: () => void) => void;
-  SignUp: (creds: LoginFormValues, onSuccess: () => void) => void;
+  SignUp: (creds: UserFormValues, onSuccess: () => void) => void;
   SignOut: () => void;
 }
 
 export interface InputProps {
   label: string;
   type: string;
-  reg: UseFormRegister<LoginFormValues>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  reg: UseFormRegister<any>;
   registerOptions: RegisterOptions;
   icon?: React.ReactNode;
   classes?: string;
@@ -28,11 +29,7 @@ export interface InputProps {
 }
 
 export interface LoginInputProps extends InputProps {
-  name: 'email' | 'password';
-}
-
-export interface RegisterInputProps extends InputProps {
-  name: string;
+  name: 'email' | 'password' | 'displayName';
 }
 
 export interface ButtonProps {
@@ -47,6 +44,12 @@ export interface ButtonProps {
 export interface LoginFormValues {
   email: string;
   password: string;
+}
+
+export interface UserFormValues {
+  email: string;
+  password: string;
+  displayName: string;
 }
 
 export interface RouteValue {

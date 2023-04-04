@@ -21,4 +21,12 @@ export const password = {
   },
 };
 
-export default { email, password };
+export const displayName = {
+  required: 'Name is required',
+  minLength: {
+    value: 3,
+    message: 'Name cannot be less than 3 characters',
+  },
+};
+
+export default { email, password, displayName };

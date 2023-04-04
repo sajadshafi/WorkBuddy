@@ -9,7 +9,7 @@ import {
   User,
 } from 'firebase/auth';
 import { firebaseAuth } from '../BaseConfig';
-import { LoginFormValues } from '../../interfaces/interfaces';
+import { LoginFormValues, UserFormValues } from '../../interfaces/interfaces';
 import Providers from '../providers/Providers';
 
 setPersistence(firebaseAuth, browserLocalPersistence);
@@ -22,7 +22,7 @@ const SignIn = async ({ email, password }: LoginFormValues) => {
   return result;
 };
 
-const SignUp = async ({ email, password }: LoginFormValues) => {
+const SignUp = async ({ email, password }: UserFormValues) => {
   const result = await createUserWithEmailAndPassword(
     firebaseAuth,
     email,
@@ -42,14 +42,13 @@ const SignInWithGoogle = async () => {
 
 const UpdateProfile = async (
   currentUser: User,
-  displayName: string,
-  photoURL: string
+  displayName: string | null,
+  photoURL: string | null
 ) => {
   const result = await updateProfile(currentUser, {
     displayName,
     photoURL,
   });
-  console.log('Profile Updated with: ', result);
   return result;
 };
 
