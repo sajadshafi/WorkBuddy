@@ -1,17 +1,18 @@
 import { screen, render } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import Login from './Login';
+import Registration from './Registration';
 
-describe('Render <Login /> component', () => {
+describe('Render <Registration /> component', () => {
   test('Login elements render', () => {
     render(
       <Router>
-        <Login />
+        <Registration />
       </Router>
     );
+    expect(screen.getByPlaceholderText(/name/i)).toBeInTheDocument();
     expect(screen.getByPlaceholderText(/email/i)).toBeInTheDocument();
     expect(screen.getByPlaceholderText(/password/i)).toBeInTheDocument();
-    expect(screen.getByText(/sign in/i)).toBeInTheDocument();
+    expect(screen.getByText(/register/i)).toBeInTheDocument();
   });
 });

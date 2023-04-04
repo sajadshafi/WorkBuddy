@@ -9,12 +9,12 @@ const Navbar = () => {
   const { user, SignOut } = useAuth();
   const [showUserMenu, setShowUserMenu] = useState(false);
   return (
-    <nav className="flex px-2 bg-light shadow-sm dark:shadow-dark-bg dark:bg-dark py-4 items-center text-darkgray dark:text-light">
+    <nav className="flex px-2 lg:px-8 bg-light shadow-sm dark:shadow-dark-bg dark:bg-dark py-4 items-center text-darkgray dark:text-light">
       <div>
         <Link to="/">
           <img
             className="h-[50px]"
-            src="/images/tromazo_logo_300.png"
+            src="/images/wb-100.png"
             alt="WorkBuddy - Manage your tasks and todos easily"
           />
         </Link>
@@ -57,8 +57,8 @@ const Navbar = () => {
               <span className="sr-only">Open user menu</span>
               <img
                 className="w-8 h-8 rounded-full"
-                src="/images/user.webp"
-                alt="Bonnie Green"
+                src={user.photoURL ? user.photoURL : '/images/user.webp'}
+                alt={user.displayName ? user.displayName : 'User'}
               />
             </button>
             <div

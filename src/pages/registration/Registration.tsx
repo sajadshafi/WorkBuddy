@@ -1,42 +1,42 @@
 // system imports
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { MdEmail, MdPassword } from 'react-icons/md';
-import { FaUserCircle } from 'react-icons/fa';
+import { FaUserCircle, FaUser } from 'react-icons/fa';
 import { RiLoginCircleFill } from 'react-icons/ri';
-import { Link, useNavigate } from 'react-router-dom';
 import { ImFacebook, ImTwitter, ImGoogle } from 'react-icons/im';
+import { Link, useNavigate } from 'react-router-dom';
 
 // custom imports
 import Input from '../../components/common/input/Input';
 import Button from '../../components/common/button/Button';
-import { LoginFormValues } from '../../interfaces/interfaces';
+import { UserFormValues } from '../../interfaces/interfaces';
 import schema from '../../utils/schema';
 import ThemeSwitch from '../../components/theme-switch/ThemeSwitch';
 import { useAuth } from '../../store/auth-context/AuthContext';
 import { useTheme } from '../../store/theme-context/ThemeContext';
 import swal from '../../utils/swal';
 
-const Login = () => {
+const Registration = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginFormValues>();
+  } = useForm<UserFormValues>();
 
-  const { SignIn, SignInWithGoogle, loading } = useAuth();
+  const { SignUp, loading } = useAuth();
   const navigate = useNavigate();
   const { theme } = useTheme();
 
   const onSuccess = () => {
     swal.toastify({
-      message: 'Logged in successfully!',
+      message: 'Registered up successfully!',
       toast_type: 'success',
       toast_theme: theme === 'dark' ? 'dark' : 'light',
     });
     navigate('/dashboard', { replace: true });
   };
-  const handleLogin: SubmitHandler<LoginFormValues> = creds => {
-    SignIn(creds, onSuccess);
+  const handleLogin: SubmitHandler<UserFormValues> = creds => {
+    SignUp(creds, onSuccess);
   };
 
   return (
@@ -54,6 +54,15 @@ const Login = () => {
                 <FaUserCircle />
               </h2>
               <div className="px-5 py-4">
+                <Input
+                  name="displayName"
+                  type="text"
+                  label="Name"
+                  reg={register}
+                  registerOptions={schema.displayName}
+                  error={errors.displayName && errors.displayName.message}
+                  icon={<FaUser />}
+                />
                 <Input
                   name="email"
                   type="text"
@@ -74,7 +83,7 @@ const Login = () => {
                 />
                 <Button
                   type="submit"
-                  text="Sign In"
+                  text="Register"
                   classes="w-full mt-8 uppercase"
                   loading={loading}
                   icon={<RiLoginCircleFill />}
@@ -82,15 +91,15 @@ const Login = () => {
               </div>
             </form>
             <div className="px-5 dark:text-light text-dark text-[.8rem]">
-              Don&apos;t have an account{' '}
+              Already have an account{' '}
               <Link
                 className="text-primary font-semibold dark:bg-darkbg bg-lightgray px-2 rounded ml-1"
-                to="/signup">
-                Register here
+                to="/signin">
+                Login here
               </Link>
             </div>
             <div className="mt-5 text-dark dark:text-light mx-5">
-              <p className="text-xs w-full h-[1px] relative bg-dark dark:bg-light">
+              <p className="text-xs w-full h-[1px] relative bg-primary dark:bg-light">
                 <span className="absolute left-1/2 -translate-x-1/2 top-1/2 p-1 bg-lightgray rounded dark:bg-dark -translate-y-1/2">
                   OR
                 </span>
@@ -99,7 +108,8 @@ const Login = () => {
                 <div className="login-button">
                   <button
                     className="login-provider-button text-primary transition-all shadow-sm shadow-light dark:shadow-dark duration-150 hover:bg-primary hover:text-lightgray text-2xl flex border-primary hover:border-2 hover:border-lightgray border-2 p-2 rounded-full"
-                    onClick={() => SignInWithGoogle(onSuccess)}>
+                    // onClick={signInWithGoogle}
+                  >
                     <span className="">
                       <ImGoogle />
                     </span>
@@ -134,4 +144,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Registration;

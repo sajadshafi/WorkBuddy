@@ -1,51 +1,63 @@
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  onAuthStateChanged,
   signOut,
-  User,
   setPersistence,
   browserLocalPersistence,
+  signInWithPopup,
+  updateProfile,
+  User,
 } from 'firebase/auth';
-import { auth } from '../BaseConfig';
-import { LoginFormValues } from '../../interfaces/interfaces';
+import { firebaseAuth } from '../BaseConfig';
+import { LoginFormValues, UserFormValues } from '../../interfaces/interfaces';
+import Providers from '../providers/Providers';
 
-setPersistence(auth, browserLocalPersistence);
+setPersistence(firebaseAuth, browserLocalPersistence);
 const SignIn = async ({ email, password }: LoginFormValues) => {
-  const result = await signInWithEmailAndPassword(auth, email, password);
+  const result = await signInWithEmailAndPassword(
+    firebaseAuth,
+    email,
+    password
+  );
   return result;
 };
 
-const SignUp = async ({ email, password }: LoginFormValues) => {
-  createUserWithEmailAndPassword(auth, email, password)
-    .then(userCredential => {
-      const { user } = userCredential;
-      return user;
-    })
-    .catch(error => {
-      return error;
-    });
+const SignUp = async ({ email, password }: UserFormValues) => {
+  const result = await createUserWithEmailAndPassword(
+    firebaseAuth,
+    email,
+    password
+  );
+  return result;
 };
 
 const SignOut = async () => {
-  await signOut(auth);
+  await signOut(firebaseAuth);
 };
 
-const IsLoggedIn: () => Promise<User | null> = async () => {
-  let currentUser = null;
-  await onAuthStateChanged(auth, user => {
-    if (user) {
-      currentUser = user;
-    }
+const SignInWithGoogle = async () => {
+  const result = await signInWithPopup(firebaseAuth, Providers.googleProvider);
+  return result;
+};
+
+const UpdateProfile = async (
+  currentUser: User,
+  displayName: string | null,
+  photoURL: string | null
+) => {
+  const result = await updateProfile(currentUser, {
+    displayName,
+    photoURL,
   });
-  return currentUser;
+  return result;
 };
 
 const TAuth = {
   SignIn,
   SignUp,
   SignOut,
-  IsLoggedIn,
+  UpdateProfile,
+  SignInWithGoogle,
 };
 
 export default TAuth;
